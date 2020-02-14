@@ -1,0 +1,62 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Interogare hardware - daisy chain" />
+
+# Interogare hardware - daisy chain
+
+**Sisteme de intreruperi multiple**
+
+Se utilizeaza un `lant de dispozitive` ("daisy chain").
+
+Toate modulele de I/E partajeaza o `linie comuna de cerere de intrerupere`.
+
+La detectarea unei cereri de intrerupere, UCP activeaza un semnal de `achitare a intreruperii`.
+
+Linia de achitare a intreruperii este inlantuita prin modulele de I/E.
+
+Semnalul de achitare se propaga prin modulele de I/E pana cand ajunge la modulul solicitant.
+
+Acest modul raspunde prin `plasarea unui vector de intrerupere` pe magistrala de date.
+
+UCP `utilizeaza vectorul ca un pointer la subrutina de tratare` pentru modul.
+
+`Avantaj`: nu este necesara executia unei subrutine generale de tratare a intreruperii.
+
+**Sisteme de intreruperi cu prioritati**
+
+In cazul cererilor simultate, este necesar un `sistem de prioritati`.
+- periferice rapide -> prioritate inalta
+
+Stabilirea prioritatii intreruperilor simultane se poate realiza prin `software` sau prin `hardware`.
+
+**Metoda hardware**
+
+Un controler de intrerupere accepta cereri de intrerupere de la mai multe surse si `determina cererea cu prioritatea maxima`.
+
+Fiecare sursa de intrerupere are un `vector propriu de intrerupere`.
+
+**Conectarea in serie a liniilor de intrerupere**
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"daisy-img.png"}/>
+</div>
+
+Dispozitivele care pot genera o cerere de intrerupere sunt conectate in lant.
+- dispozitivul cu `prioritatea maxima` este plasat in `prima pozitie`
+
+Linia de cerere a intreruperii este comuna pentru toate dispozitivele (conexiune `SAU cablat`).
+
+Daca nu exista nici o cerere de intrerupere, linia de cerere ramane in starea 0 logic.
+
+- UCP raspunde la o cerere de intrerupere prin activarea semnalului de achitare `IACK`.
+- Semnalul este receptionat de dispozitivul D0 la intrarea sa `PI` (Priority IN).
+- Semnalul este transmis la iesire `PO` (Priority Out) numai daca D0 nu solicita o intrerupere
+- Daca D0 are o cerere de intrerupere activate:
+    - Blocheaza semnalul de achitare
+    - Depune propriul vector de intrerupere
+
+<Links />

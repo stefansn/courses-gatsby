@@ -1,0 +1,21 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Structura unui sistem de I/E" />
+
+# Structura unui sistem de I/E
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"structura-sistem.png"}/>
+</div>
+
+Echipamentele periferice `nu se conecteaza direct la magistrala`.
+Motive:
+- Exista o `mare varietate de periferice`, cu principii de functionare diferite
+- `Rata de transfer` a perifericelor poate fi mult mai redusa decat cea a memoriei si a UCP
+- Perifericele utilizeaza `formate diferite ale datelor` si `cuvinte de lungimi diferite` fata de UCP
+
+<Links />

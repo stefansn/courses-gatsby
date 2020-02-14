@@ -1,0 +1,103 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Metode de efectuare a transformarilor prin DMA" />
+
+# Sincronizarea transferurilor de date
+
+Dupa modul de sincronizare al transferurilor de date, magistralele pot fi:
+- sincrone
+- asincrone
+
+Operatiile `magistralelor sincrone` sunt controlate de un semnal de ceas, astfel necesita un numar intreg de perioade de ceas.
+`Magistralele asincrone` **nu** utilizeaza un semnal de ceas, astfel ciclurile de magistrala pot avea orice durata.
+
+
+<h3>Magistrale sincrone</h3>
+
+Fiecare cuvant este transferat pe durata unui numar intreg de cicluri de ceas.
+
+Durata este cunoscuta atat de unitatea sursa, cat si de cea destinatie -> sincronizare.
+
+**Sincronizarea**:
+- conectarea ambelor unitati la un semnal de `ceas comun` -> distante scurte
+- utilizarea unor `semnale de ceas separate` pentru fiecare unitate -> trebuie transmise semnale de sincronizare in mod periodic
+
+*Transfer sincron - citire:*
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"sincronizare-transfer-sincron-citire.png"}/>
+</div>
+
+*Transfer sincron - scriere:*
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"sincronizare-transfer-sincron-scriere.png"}/>
+</div>
+
+Cerinta ca unitatea `slave` sa raspunda in urmatorul ciclu de ceas poate fi eliminata.
+
+Se introduce un semnal de control suplimentar `ACK` sau `WAIT`, controlat de unitatea `slave`.
+- semnalul este activat doar atunci cand unitatea `slave` a terminat transferul datelor.
+
+Unitatea `master` asteapta pana cand receptioneaza semnalul `ACK` sau `WAIT` -> se introduc `stari de asteptare`.
+
+**Dezavantaje** ale magistralelor sincrone:
+- Daca un transfer se termina `inaintea` unui numar intreg de cicluri, trebuie sa astepte pana la sfarsitul ciclului.
+- Viteza trebuie aleasa dupa dispozitivul cel mai lent
+- Dupa alegerea unui ciclu de magistrala, este `dificil sa se utilizeze avantajele imbunatatirilor tehnologice viitoare`.
+
+<h3>Magistrale asincrone</h3>
+
+O magistrala asincrona elimina dezavantajele magistralelor sincrone.
+
+In locul semnalului de ceas se utilizeaza `semnale de control suplimentare` si un `protocol logic` intre unitati (sursa, destinatie).
+
+Protocolul poate fi:
+  - **Unidirectional** - semnalele de sincronizare sunt generate de una din cele doua unitati
+  - **Bidirectional** - ambele unitati genereaza semnale de sincronizare
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"mag_asincrone.png"}/>
+</div>
+
+  - `Transfer prin protocol unidirectional`
+  - a) Transfer `initiat de sursa` - **DREADY** (Data Ready)
+  - b) Transfer `initiat de destinatie` - **DREQ** (Data Request)
+
+Semnalele `DREADY` si `DREQ` pot fi utilizate pentru:
+- transferul datelor de la unitatea sursa pe magistrala
+- incarcarea datelor de pe magistrala de catre unitatea destinatie
+
+Semnale de `strob`.
+
+*Exemplu*: Sursa genereaza un cuvant de date in mod asincron si il plaseaza intr-un registru buffer.
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"mag_asincrone_exemplu.png"}/>
+</div>
+
+- Semnalul `DREQ` valideaza intrarea de ceas a bufferului.
+
+`Dezavantajul` protocolului unidirectional:
+  - nu permite verificarea terminarii cu succes a transferului
+    - *Exemplu*: Intr-un transfer initiat de sursa, aceasta nu are confirmarea receptiei datelor de catre destinatie
+
+`Solutia`: introducerea unui `semnal de confirmare ACK (Acknowledge)` -> protocol `bidirectional`.
+
+*a) Transfer prin protocol bidirectional `initiat de sursa`*
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"mag_transfer_protocol_initiat_sursa.png"}/>
+</div>
+
+*b) Transfer prin protocol bidirectional `initiat de destinatie`*
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"mag_transfer_protocol_initiat_destinatie.png"}/>
+</div>
+
+<Links />

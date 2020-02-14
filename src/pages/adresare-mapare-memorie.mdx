@@ -1,0 +1,25 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Adresare cu mapare in memorie" />
+
+# Adresare cu mapare in memorie
+
+Exista `un singur spatiu de adrese` pentru locatiile de memorie si dispozitivele de I/E.
+
+UCP trateaza registrele de stare si de date ale modulelor de I/E ca locatii de memorie.
+- se utilizeaza aceleasi instructiuni si la dispozitivele de I/E
+- `nu sunt necesare instructiuni speciale de I/E` -> instructiuni de incarcare si memorare
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"mapare_memorie.png"}/>
+</div>
+
+Liniile de control `RD` si `WR` se utilizeaza pentru a initia fie un ciclu de acces la memorie, fie un transfer de I/E.
+
+
+
+<Links />

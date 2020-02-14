@@ -1,0 +1,58 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Interogare software - polling" />
+
+# Interogare software - polling
+
+**Sisteme de intreruperi multiple**
+
+Atunci cand UCP detecteaza o intrerupere, executa o subrutina de tratare a intreruperii.
+
+`Se interogheaza modulele de I/E` pentru a determina modulul generator al intreruperii.
+
+Pentru interogare se poate utiliza o `linie de comanda separata`.
+
+Fiecare modul de I/E poate contine un `registru de stare adresabil`.
+
+**Sisteme de intreruperi cu prioritati**
+
+In cazul cererilor simultate, este necesar un `sistem de prioritati`.
+- periferice rapide -> prioritate inalta
+
+Stabilirea prioritatii intreruperilor simultane se poate realiza prin `software` sau prin `hardware`.
+
+**Metoda software**
+
+- Identificarea sursei de prioritate maxima se realizeaza prin `interogare`
+- Exista o `subrutina comuna de tratare`, care interogheaza sursele de intrerupere
+- Ordinea in care sunt interogate sursele determina prioritatea lor
+- `Dezavantaj`: in cazul unui numar mare de surse, timpul necesar interogarii creste
+
+**Conectarea in paralel a liniilor de intrerupere**
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"polling-img.png"}/>
+</div>
+
+Se utilizeaza un `registru de intrerupere RINT`
+- bitii acestuia sunt setati separat de cererile de intrerupere ale fiecarui dispozitiv
+
+Prioritatea este stabilita in functie de pozitia bitilor din registru.
+
+`Registrul mastilor de intrerupere RM` permite controlul (dezactivarea) starii fiecarei cereri de intrerupere.
+
+`Codificatorul prioritar`:
+    - implementeaza functia de prioritate
+    - genereaza doi biti ai vectorului de intrerupere
+
+Vectorul este transferat la UCP prin buffere cu trei stari.
+
+Validarea bufferelor: prin semnalul `IACK` de la UCP si prin bistabilele `IST`, `IEN`.
+    - `IST`: bistabilul de stare a intreruperilor
+    - `IEN`: bistabilul de validare a intreruperilor
+
+<Links />

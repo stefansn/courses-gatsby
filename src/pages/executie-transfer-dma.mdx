@@ -1,0 +1,46 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Executia transferurilor prin DMA" />
+
+# Executia transferurilor prin DMA
+
+UCP transmite controlerului DMA o `secventa de initializare`.
+
+Secventa de initializare contine:
+- Directia transferului (citire sau scriere)
+- Adresa dispozitivului de I/E implicat
+- Adresa de inceput a zonei de memorie cu care se efectueaza transferului
+- Numarul de octeti sau de cuvinte care trebuie transferate
+
+UCP elibereaza magistrala si poate executa alte operatii.
+Controlerul DMA va genera adresele si semnalele de comanda necesare transferului.
+Dupa un ciclu DMA se continua cu alte cicluri sau se reda controlul UCP.
+La terminarea transferului, controlerul DMA genereaza o cerere de intrerupere catre UCP.
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"transfer-dma1.jpg"}/>
+</div>
+
+1) UCP incarca registrele IOAR si DC cu valorile initiale necesare -> instructiuni de I/E.
+
+2) Atunci cand controlerul DMA este pregatit pentru transfer, activeaza semnalul DMAREQ
+
+- La urmatorul punct de suspendare DMA, UCP elibereaza magistrala si activeaza semnalul DMAACK
+
+3) Controlerul DMA transfera datele direct cu memoria principala; registrele IOAR si DC sunt actualizate
+
+4) Daca registrul DC!=0, dar dispozitivul de I/E nu este pregatit, controlerul DMA elibereaza magistrala
+
+- UCP dezactiveaza semnalul DMAACK si preia controlul asupra magistralei
+
+5) Daca registrul DC=0, controlerul DMA elibereaza magistrala si transmite o cerere de intrerupere catre UCP
+
+- UCP raspunde prin oprirea dispozitivului de I/E sau prin initierea unui nou transfer
+
+
+
+<Links />

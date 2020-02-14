@@ -1,0 +1,20 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+
+<SEO title="Metode de efectuare a transformarilor prin DMA" />
+
+# Metode de efectuare a transformarilor prin DMA
+
+1. Prin `suspendarea operatiilor` efectuate de UCP si trecerea magistralei intr-o stare de inalta impedanta
+    - transfer `"in rafala" (data break)` sau pe blocuri
+    - metoda este necesara, de exemplu pentru unitati de discuri magnetice, unde transferul datelor nu poate fi oprit sau incetinit
+    - UCP este inactiv pentru perioad relativ lungi de timp
+
+2. Prin `utilizarea intervalelor de timp in care UCP nu acceseaza memorie`
+    - transfer prin `furt de ciclu ("cycle stealing")`
+    - blocurile lungi de date sunt transferate printr-o secventa de tranzactii DMA intercalate cu tranzactii ale UCP
+    - metoda reduce rata maxima de transfer, dar reduce si interferenta controlerului DMA la accesul memoriei de catre UCP
+
+<Links />

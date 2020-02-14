@@ -1,0 +1,25 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Adresare izolata" />
+
+# Adresare izolata
+
+`Spatiul adreselor de I/E este separat de cel al memoriei`
+
+Magistrala trebuie sa contina:
+- linii de `citire` si de `scriere` pentru memorie
+- linii de `comanda` pentru intrare si iesire
+
+O instructiune cu referire la memorie activeaza linia de control `MRD` sau `MWR`.
+
+UCP trebuie sa execute `instructiuni separate de I/E` pentru a activa liniile `IORD` si `IOWR`.
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"adresare-izolata.png"}/>
+</div>
+
+<Links />

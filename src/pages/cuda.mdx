@@ -1,0 +1,51 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Componentele arhitecturii CUDA" />
+
+# Componentele arhitecturii CUDA
+
+Platforma si model de programare paralela pentru circuitele GPU Nvidia. Permite utilizarea limbajelor C, C++, Fortran, a limbajelor Java si Python (prin adaptoare) si
+a interfetei de programare API DirectCompute.
+
+Permite accesarea resurselor GPU pentru calcule de uz general. 
+
+Utilizeaza abilitatea GPU de a opera in paralel asupra matricilor de dimensiuni mari.
+
+Extinde limbajul C cu noi facilitati:
+- noi calificatori de tip si functii API
+- functii C specifice (functii Kernel); executate de N ori in paralel de N fire de executie CUDA
+- la definirea functiei, trebuie specificata si configuratia de executie a acesteia 
+- fiecarui fir care executa functia kernel i se asigneaza un identificator unic
+
+Firele de executie sunt organizate intr-un ``bloc de fire de executie``. Fiecare fir dintr-un bloc executa o instantiere a unei functii kernel. Firele de 
+executie dintr-un bloc pot fi organizate in structuri 1D, 2D sau 3D. Numarul de fire dintr-un bloc este limitat. O functie kernel poate fi executata de unul sau mai multe blocuri.
+Blocurile de fire trebuie sa se poata executa independent si in orice ordine. Firele dintr-un bloc comunica prin memorie partajata si primitive de sincronizare.
+- fiecare actioneaza ca o bariera la care toate firele dintr-un bloc trebuie sa astepte.
+
+Blocurile de fire de executie sunt organizate intr-o grila de blocuri grila.
+- firele dintr-o grila acceseaza o memorie globala.
+
+Exececutia ierarhiei pe un nucleu CUDA:
+- fir: executat pe un nucleu CUDA
+- bloc de fire: executat pe un multiprocesor de sir SM
+- grila de blocuri: executata pe matrice de SM
+
+``Memorie unificata``
+
+O parte a memoriei GPU este partajata intre UCP si GPU (model cu pointer unic).
+Memoria este gestionata de sistem, fara a fi necesare apeluri intre GPU si UCP.
+Memoria modificata de UCP trebuie sincronizata cu memoria GPU.
+
+Avantaj: programarea GPU este simplificata.
+
+``Planificare si executia firelor``
+
+Un SM CUDA utilizeaza o arhitectura SIMT. Firele sunt create, planificate si executate in gruuri de 32 de fire -> urzeala (warp). Firele dintr-o urzeala incep executia
+la aceeasi adresa de program. Au propriul contor de program si propria stare. Se obtine eficienta maxima daca toate firele dintr-o urzeala au aceleasi cai de executie.
+Divergenta salturilor: urzeala executa calea cu conditia adevarata si dezactiveaza celelalte fire.
+
+<Links />

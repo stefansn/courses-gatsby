@@ -1,0 +1,58 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Ansamblul optic de citire" />
+
+# Ansamblul optic de citire
+
+Dioda laser emite un fascicul in infrarosu, acesta fiind focalizat pe suprafata discului. Pozitionarea fasciculului se face cu un servomecanism.
+O parte a fasciculului este reflectata si dirijata catre o fotodioda, rezultand un semnal electric.
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"ansamblu-optic.png"}/>
+</div>
+
+<h4>Mecanismul de pozitionare</h4>
+
+Deplaseaza oglinda si sistemul de lentile. Ansamblul optic se deplaseaza pe un set de sine, iar pozitionarea precisa pe o pista se face
+cu un microcontroler si un sistem servo electric. Sistemul servo masoara nivelul semnalului si ajusteaza pozitia ansamblului de citire.
+
+Sistemele obisnuite utilizeaza trei fascicule. Fasciculul laser este divizat in trei fascicule de o prisma polarizata. Se masoara
+intensitatea fasciculelor laterale, rezultand un semnal pentru corectia fasciculului laser.
+
+<h4>Compensarea deplasarii verticale</h4>
+
+Fotodioda este impartita in patru cuadrante. La deviatia discului, spotul devine eliptic, ceea ce inseamna ca semnalele generate de cuadrante
+vor diferi. Lentila obiectiv este deplasata corespunzator.
+
+<h4>Viteza nominala (Viteza "X")</h4>
+
+Se refera la viteza de rotatie a discului. Este un indicator al ratei maxime teoretice de transfer. O unitate cu viteza 1X are aceeasi
+viteza de rotatie ca si o unitate standard CD audio.
+
+<h4>Metoda ``CLV`` - viteza liniara constanta</h4>
+
+Viteza de rotatie este variabila, fiind mai mare spre centrul discului. In schimb, rata de transfer este constanta.
+Metoda este utilizata la unitatile CD audio si la primele generatii de discuri CD-ROM (1X...12X).
+Primele unitati CD Audio au fost realizate pentru a transfera acelasi volum de date in fiecare secunda.
+
+<h4>Metoda ``CAV`` - viteza unghiulara constanta</h4>
+
+Viteza de rotatie este constanta, in schimb cea de transfer este variabile. 
+
+- Avantaj: ``nu`` este necesara schimbarea vitezei de rotatie.
+- Dezavantaj: rata de transfer se reduce spre interiorul discului.
+
+Metoda este utilizata la unitatile CD-ROM cu viteza de peste 12X.
+
+<h4>Tehnologie ``TrueX``</h4>
+
+Permite cresterea performantei unitatilor optice. Se utilizeaza mai multe fascicule pentru scanarea simultana a mai multor piste. 
+Este un circuit integrat care contine: procesor de semnal, controler servo, decodor, sistem de corectie a erorilor, interfata ATAPI.
+
+Optional: interfata SCSI, USB.
+
+<Links />

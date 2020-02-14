@@ -1,0 +1,39 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="Interfata Embedded Display Port" />
+
+# Interfata Embedded Display Port
+
+Permite conectarea adaptoarelor grafice la panourile de afisare ale calculatoarelor portabile.
+- de obicei se utilizeaza o interfata bazata pe protocolul electric LVDS.
+
+Se bazeaza pe standardul DisplayPort.
+- aceeasi interfata electrica
+- acelasi protocol digital de baza
+
+Poate utiliza acelasi port video GPU ca si conexiunile DisplayPort externe.
+
+Pe ``legatura principala`` se transfera:
+- date ale pixelilor si de sincronizare (de ex. ceasul de pixel)
+- informatii despre formatul video (de ex. spatiul culorilor bpp)
+- cod ECC pentru datele video
+
+Date transferate pe canalul AUX:
+- informatii EDID
+- controlul afisarii: luminozitate, control dinamic al luminii de fond, control al ratei cadrelor
+- controlul consumului de energie
+
+**Avantaje fata de protoclul LVDS**
+- Un singur conector (date, control, alimentare)
+- Numar redus de conexiuni -> cablu simplu
+- Interferente electromagnetice reduse
+- Permite noi posibilitati de control al afisajelor
+- Consum redus de energie (de ex. facilitatea de auto-reimprospatare a afisajului)
+- Protocolul bazat pe pachete este extensibil
+- Permite controlere cu grad ridicat de interogare
+
+<Links />

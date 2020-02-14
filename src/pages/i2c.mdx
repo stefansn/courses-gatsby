@@ -1,0 +1,100 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/links';
+import Image from '../components/image'
+
+<SEO title="I2C" />
+
+# I2C
+
+<h3>Prezentare generala</h3>
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"i2c-prezentare.png"}/>
+</div>
+
+I2C (Inter Integrated Circuits) - Philips
+
+Magistrala bidirectionala cu doua linii:
+- date seriale `SDA` (Serial Data)
+- ceas serial `SCL` (Serial Clock)
+
+Un dispozitiv conectat la magistrala I2C poate functiona ca:
+- `Receptor`
+- `Transmitator` si `receptor`
+
+Fiecare dispozitiv are o `adresa unica`.
+
+Transmitatoarele si receptoarele pot functiona in modul `master` sau `slave`.
+
+Pot exista mai multe dispozitive `master`:
+- procedura de `arbitraj`
+
+<h3>Conditii de START si de STOP</h3>
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"i2c-start-stop.png"}/>
+</div>
+
+Generate de catre dispozitivul `master`.
+
+Conditie de `START`:
+- Tranzitie de 1->0 a liniei `SDA, SCL` = 1 logic
+
+Conditie de `STOP`:
+- Tranzitie de 0->1 a liniei `SDA, SCL` = 1 logic
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"i2c-start-stop2.png"}/>
+</div>
+
+Datele de pe linia `SDA` trebuie sa fie stabile in timp ce `SCL` este 1 logic.
+
+Datele se pot schimba numai atunci cand `SCL` este 0 logic.
+
+<h3>Transferuri de date</h3>
+
+Categorii de informatii transmise pe magistrala I2C, intre conditiile de `START` si de `STOP`:
+- `Adresa` dispozitivului *slave*
+    - 7 sau 10 biti
+- Bit de `citire/scriere`
+- Biti de `date`, in segmente de cate 8 biti
+- Bit de `confirmare`
+    - transmis dupa fiecare segment de date
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"i2c-transferuri.png"}/>
+</div>
+
+Exemplu de transfer:
+- numarul de octeti din cadrul unui transfer nu este limitat
+- receptorul poate forta transmitatorul intr-o `stare de asteptare`
+
+Trei formate pentru transferuri de date:
+- `Scriere date` de la un transmitator *master* la un receptor *slave*
+- `Citire date` de catre un dispozitiv *master*
+- Transferuri de `citire si scriere multiple`
+
+Adresa si directia datelor sunt codificate in primul octet dupa conditia de `START`.
+- Bit c.m.p.s = 0: `scriere date` de la *master*
+- Bit c.m.p.s = 1: `citire date` de la *slave*
+
+<h3>Versiuni</h3>
+
+Magistrala I2C originala
+- rata de transfer maxima de 100kbs
+- adrese de 7 biti
+
+Versiunea 2.0:
+- mode transfer rapid (Fast-mode), max 400 kbs
+- adrese de 10 biti
+- posibilitatea conectarii dispozitivelor cu adrese de 7 sau 10 biti
+
+Versiunea 2.1:
+- deplasarea nivelelor de tensiune (`Level-shifting`) pentru conectarea dispozitivelor cu tensiuni de alimentare diferite
+- specificatii extinse pentru dispozitive cu tensiunea sub 2,7V
+- mod de transfer de viteza ridicata (`High-speed`) -> max 3,4 mbps
+
+
+<Links />
