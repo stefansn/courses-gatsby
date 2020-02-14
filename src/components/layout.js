@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
+// import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import Links from '../components/Links'
 import Header from './header'
 import './layout.css'
@@ -25,7 +25,7 @@ const Layout = ({ children }) => (
         }}>
         <Header siteTitle={data.site.siteMetadata.title} />
 
-        <ThemeToggler>
+        {/* <ThemeToggler>
           {({ theme, toggleTheme }) => (
             <label>
               <input
@@ -36,7 +36,7 @@ const Layout = ({ children }) => (
               Dark mode
             </label>
           )}
-        </ThemeToggler>
+        </ThemeToggler> */}
 
         <div
           style={{
