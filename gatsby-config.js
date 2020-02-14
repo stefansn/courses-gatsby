@@ -8,7 +8,6 @@ module.exports = {
     author: '@chrisbiscardi',
   },
   plugins: [
-    // 'gatsby-plugin-dark-mode',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -44,6 +43,7 @@ module.exports = {
         icon: 'src/static/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
+    'gatsby-plugin-dark-mode'
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
