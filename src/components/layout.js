@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import Header from './header'
 import './layout.css'
 
@@ -23,19 +22,6 @@ const Layout = ({ children }) => (
           transition: 'color 0.2s ease-out, background 0.2s ease-out',
         }}>
         <Header siteTitle={data.site.siteMetadata.title} />
-
-        <ThemeToggler>
-          {({ theme, toggleTheme }) => (
-            <label>
-              <input
-                type="checkbox"
-                onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
-                checked={theme === 'dark'}
-              />{' '}
-              Dark mode
-            </label>
-          )}
-        </ThemeToggler>
 
         <div
           style={{
