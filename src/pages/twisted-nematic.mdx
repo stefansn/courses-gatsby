@@ -1,0 +1,87 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/Links';
+import Image from '../components/image'
+
+<SEO title="Tehnologia Twisted Nematic" />
+
+# Tehnologia Twisted Nematic
+
+**Principiul de functionare**
+
+Afisajele cu cristale lichide sunt ``pasive``.
+Utilizeaza o sursa de lumina (de fond) sau o oglinda (reflecta lumina ambientala).
+Functionarea se bazeaza pe proprietatile ``luminii polarizate``.
+- undele de lumina sunt orientate in paralel cu o anumita directie specifica
+- se poate obtine cu un ``polarizator``
+
+Lumina polarizata trece printr-un strat de cristale lichide Twisted Nematic (TN).
+- lumina urmeaza alinierea moleculelor
+- directia de polarizare se modifica in functie de rotirea moleculelor
+
+Un pixel: cristale lichide TN introduse intre doi electrozi transparenti.
+- electrozii sunt prevazuti cu ``straturi de aliniere`` pentru a controla alinierea moleculelor -> ``caneluri``.
+- canelurile de pe cei doi electrozi sunt perpendiculare intre ele
+- rezulta o rasucire de 90 grade a axelor longitudinale ale moleculelor de pe cei doi electrozi.
+
+
+
+*Fara tensiune aplicata*
+- doua polarizatoare
+- doua placi de sticla
+- doi electrozi transparenti
+- strat de cristale lichide TN
+
+- lumina este polarizata de primul filtru
+- directia de polarizare este rotita cu 90 grade
+- lumina va trece si prin al doilea filtru
+
+<div style={{ maxWidth: '350px', marginBottom: '1.45rem' }}>
+  <Image imgName={"tn1.png"}/>
+</div>
+
+*Cu tensiune aplicata*
+
+- moleculele se realiniaza
+- directia axelor longitudinale tinde sa se alinieze in paralel cu directia campului
+- undele de lumina nu sunt rotite -> sunt blocate de al doilea polarizator
+- prin controlul tensiunii, se pot obtine diferite nivele de gri
+
+<div style={{ maxWidth: '350px', marginBottom: '1.45rem' }}>
+  <Image imgName={"tn2.png"}/>
+</div>
+
+Afisaje la care ``lumina este blocata`` in zonele asupra carora ``nu se aplica o tensiune``.
+- directiile de polarizare sunt paralele
+- efectul optic este mai dependent e grosimea afisajului atunci cand nu se aplica o tensiune
+- ochiul este mai sensibil la variatii ale luminozitatii in starea intunecata -> imagine patata.
+- aceasta varianta poate creste si energia consumata
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"tn3.png"}/>
+</div>
+
+*Raspunsul unei celule TN la o tensiune aplicata*
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"tn4.png"}/>
+</div>
+
+*Procentul de transmisie a luminii la o celula TN*
+
+**Afisaje Color**
+
+- sunt necesare nivele intermediare de luminozitate
+- modificarea tensiunii aplicate celulelor
+- lumina de fond de culoare alba contine toate lungimile de unda
+- componentele de culoare se obtin prin filtrarea culorii albe
+- fiecare pixel este compus din trei sub-pixeli pentru culorile R,G si B -> sinteza aditiva.
+
+**Structura afisajului**
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"tn5.png"}/>
+</div>
+
+<Links />

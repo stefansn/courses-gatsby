@@ -1,0 +1,41 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/Links';
+import Image from '../components/image'
+
+<SEO title="Protocolul TMDS utilizat de interfata HDMI" />
+
+# Protocolul TMDS utilizat de interfata HDMI
+
+TMDS = Transition Minimized Differential Signaling
+
+- Minimizeaza numarul de tranzitii 0-1 si 1-0 ale semnalelor
+- Codificare 8b/10b
+- Se utilizeaza semnale diferentiale cu perechi de fire rasucite
+- Legatura TMDS: consta dintr-un transmitator TMDS si un receptor TMDS
+
+<div style={{ maxWidth: '600px', marginBottom: '1.45rem' }}>
+  <Image imgName={"tmds1.png"}/>
+</div>
+
+Contine trei ``codificatoare`` identice.
+
+Intrarile fiecarui codificator sunt 8 biti ai pixelilor, biti de control si date auxiliare.
+
+In fiecare ciclu de ceas, codificatorul genereaza un caracter de 10 biti:
+- din 8 biti ai datelor video
+- din 2 biti de control
+- din 4 biti ai datelor auxiliare
+
+Iesirea fiecarui codificator: un sir continuu de caractere TMDS serializate.
+
+Contine semnale pentru un canal DDC (Display Data Channel) intre afisaj si calculator:
+- implementat prin magistrala seriala ACCESS.bus (bazata pe I2C)
+- DDC2 asigura o comunicatie bidirectionala intre afisaj si calculator
+- Permite configurarea automata a sistemului
+- Formatul datelor de configuratie: definit de standardul EDID -> memorie EPROM EDID.
+
+
+
+<Links />

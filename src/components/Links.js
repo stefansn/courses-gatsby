@@ -30,6 +30,15 @@ const Links = () => (
             <li><Link to="/cec-hdmi/">CEC - interfata HDMI</Link></li>
             <li><Link to="/bluray-ultra/">Bluray Ultra (UHD)</Link></li>
             <li><Link to="/cuda/">Componentele arhitecturii CUDA</Link></li>
+            <li><Link to="/twisted-nematic/">Tehnologia Twisted Nematic</Link></li>
+            <li><Link to="/tehnici-intercalare-control-rate/">Tehnicile de intercalare spatiala a culorilor si controlul ratei cadrelor - afisaje cristale lichide</Link></li>
+            <li><Link to="/avantaje-oled/">Avantaje si dezavantaje OLED</Link></li>
+            <li><Link to="/advanced-color-epaper/">Advanced Color ePaper</Link></li>
+            <li><Link to="/dedicat-integrat/">Comparatie placi video integrate vs dedicate</Link></li>
+            <li><Link to="/tmds-hdmi/">Protocolul TMDS utilizat de HDMI</Link></li>
+            <li><Link to="/scriere-cdr/">Scrierea discurilor CD-R</Link></li>
+            <li><Link to="/bdxl/">Discurile BDXL</Link></li>
+            <li><Link to="/matrice-activa-pasiva/">Afisaje cu matrice pasiva si activa</Link></li>
         </ul>
         <Link to="/">Go back to the homepage</Link>
     </div>

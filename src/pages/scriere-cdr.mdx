@@ -1,0 +1,60 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/Links';
+import Image from '../components/image'
+
+<SEO title="Scrierea discurilor CD-R" />
+
+# Scrierea discurilor CD-R
+
+Scrierea: modificarea proprietatilor reflectorizante ale unei vopsele organice.
+
+Vopsele organice fotosensibile:
+- cianina
+- ftalocianina
+- azo
+
+Pentru protectia impotriva oxidarii, stratul de vopsea se acopera cu un strat de metal.
+
+**Scrierea**
+
+Cu o raza laser care incalzeste in mod selectiv anumite zone:
+- in zonele incalzite, vopseaua organica isi schimba compozitia chimica
+- zonele *arse* reflecta lumina intr-o masura mai redus -> corespund ``cavitatilor``
+- zonele *nearse* reflecta lumina intr-o masura mai mare -> corespund ``suprafetelor``
+Discul poate fi citit de unitatile obisnuite.
+
+Discul este gravat cu o ``canelura spiralata``.
+- similara cu spirala de pun disc CD obisnuit
+Canelura este utilizata de unitatea CD-R in timpul inregistrarii pentru urmarirea caii de date de pe disc.
+- daca discul ar fi complet neformatat, inscrierea pistelor spiralate ar fi dificila
+
+Canelura are o excursie (deviatie) sinusoidala de 0,3um la o frecventa de 22,05 KHz.
+
+Discurile inscriptibile trebuie sa contina adresele blocurilor.
+
+Adresele sunt inregistrate prin metoda ATIP (Absolute Time In Pre-Groove).
+- sinusoidala este modulata cu un semnal 1 KHz
+- informatii inregistrate:
+    - adrese sub forma MSF
+    - producatorul
+    - vitezele de scriere
+    - puterea laserului
+
+Discurile CD-R au doua zone suplimentare de date aflate in zona de inceput a discului.
+
+Sunt utilizate pentru memorarea datelor specifice procesului de inregistrare.
+
+Zone de memorare a programului:
+- contine numerele pistelor pentru titlurile inregistrate si adresele lor de inceput si sfarsit
+
+Zone de calibrare a puterii:
+- se utilizeaza pentru calibrarea puterii laserului
+- puterea optima depinde de:
+    - viteza de inregistrare
+    - temperatura ambianta
+    - umiditate
+    - tipul discului
+
+<Links />

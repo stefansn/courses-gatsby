@@ -1,0 +1,68 @@
+import { Link } from 'gatsby'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import Links from '../components/Links';
+import Image from '../components/image'
+
+<SEO title="Afisaje cu matrice activa si pasiva" />
+
+# Afisaje cu matrice activa si pasiva
+
+**Afisaje cu matrice pasiva**
+
+Utilizeaza un set de ``electrozi transparenti`` multiplexati.
+
+Un tranzistor conectat la fiecare electrod de linie sau de coloana.
+
+Stratul de cristale lichide se afla intre electrozi.
+
+Electrozii sunt realizati din oxid de staniu-indiu.
+
+Un pixel - adresat atunci cand i se aplica o tensiune.
+Pixelul ``devine opac``, atunci cand este adresat.
+La eliminarea tensiunii, pixelul se dezactiveaza lent.
+
+Controlerul afisajului baleiaza matricea de pixeli.
+
+Intarziere de la aplicarea tensiunii asupra unui pixel pana cand acesta este activat -> timpul de raspuns.
+
+Inertie a pixelilor dupa eliminarea tensiunii.
+
+Timpul de baleiere al matricei trebuie sa fie mai redus decat timpul necesar pentru dezactivarea pixelilor.
+
+**Dezavantaje**
+
+- Interferenta intre pixeli vecini
+    - cauzeaza aparitia unor umbre ale obiectelor luminoase
+- unghiul de vizualizare este limitat
+- timpul de raspuns este relativ ridicat
+    - imaginea curenta este mentinuta pe ecran si dupa afisarea unei noi imagini
+
+
+**Afisaje cu matrice activa**
+
+Placa de sticla din fata afisajului este acoperita cu un ``electrod continuu``.
+
+Placa de sticla din spate este acoperita cu un ``electrod divizat in pixeli``.
+
+Fiecare pixel este conectat in serie cu un ``tranzistor cu film subtire TFT``.
+
+Poate fi conectat in serie si un ``condensator``.
+
+O imagine este create prin baleiera matricei:
+- selecteaza o linie de pixeli prin aplicarea tensiuni pe ``electrodul de linie`` conectat la portile tranzistoarelor din acea linie.
+- se aplica tensiunile corespunzatoare imaginii pe ``electrozii de coloana`` conectati la sursele tranzistoarelor.
+- operatiile se repeta pentru fiecare linie
+- frecventa de reimprospatare: 50 sau 60 Hz
+
+**Avantaje** (comparativ cu afisajele cu matrice pasiva):
+- timp de raspuns mai redus
+- contrast mai ridicat
+- nivel de stralucire mai ridicat
+- unghi de vizualizare mai mare
+
+**Dezavantaje** 
+- necesita o lumina de fond mai puternica
+- cost mai ridicat
+
+<Links />
