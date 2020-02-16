@@ -7,7 +7,7 @@ const Links = () => (
         <h4 style={{paddingTop: 10}}>Partial</h4>
         <ul className="list">
             <li><Link to="/pcie-vs-pci/">Imbunatatiri PCIe fata de PCI</Link></li>
-            <li><Link to="/transfer-dma/">Metode de efectuare a transformarilor prin DMA</Link></li>
+            <li><Link to="/transfer-dma/">Metode de efectuare a transferurilor prin DMA</Link></li>
             <li><Link to="/executie-transfer-dma/">Executia transferurilor prin DMA</Link></li>
             <li><Link to="/sincronizare-transferuri/">Sincronizarea transferurilor de date</Link></li>
             <li><Link to="/interogare-software/">Interogare software - polling</Link></li>
